@@ -1,0 +1,85 @@
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+    min-height: 100vh;
+    background: #1cc88a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Login box */
+.login-container {
+    background: #ffffff;
+    padding: 30px 35px;
+    width: 360px;
+    border-radius: 8px;
+    /* box-shadow: 0 10px 25px rgba(0,0,0,0.15); */
+}
+
+/* Title */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Table cleanup */
+/* .login-container table {
+    width: 100%;
+} */
+
+
+
+/* Input fields */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Error messages */
+.error {
+    color: #e74a3b;
+    font-size: 12px;
+    padding-bottom: 6px;
+}
+
+/* Login error */
+.login-error {
+    text-align: center;
+    color: #e74a3b;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+/* Button */
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #4e73df;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    /* transition: background 0.3s ease; */
+}
+
+/* Hover effect */
+.login-container input[type="submit"]:hover {
+    background: #2e59d9;
+}
