@@ -15,11 +15,7 @@
     align-items: center;
 }
 
-/* .logo {
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-} */
+
 
 .nav-links {
     list-style: none;
@@ -30,31 +26,14 @@
     margin-left: 20px;
 }
 
-/* .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-} */
+
 
 .nav-links a.logout {
     background: #e74a3b;
     padding: 6px 12px;
     border-radius: 4px;
 }
-.deliveryimg {
-width: 100%;
-height: 100%;
-object-fit: cover;   
-}
-/* Container */
-/* .container {
-    padding: 30px;
-} */
 
-/* .subtitle {
-    color: #666;
-    margin-bottom: 20px;
-} */
 
 /* Cards */
 .cards {
@@ -72,17 +51,6 @@ object-fit: cover;
 }
 
 
-
-
-
-/* Table */
-/* .table-box {
-    background: #fff;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-} */
-
 table {
     width: 100%;
     /* border-collapse: collapse; */
@@ -95,13 +63,5 @@ table th, table td {
     text-align: left;
 }
 
-/* table th {
-    background: #f8f9fc;
-} */
 
-/* Select */
-/* select {
-    padding: 5px;
-    border-radius: 4px;
-} */
 
