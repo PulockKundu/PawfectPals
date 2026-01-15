@@ -8,7 +8,7 @@ session_start();
 
 $email = $_REQUEST["email"];
 $password = $_REQUEST["password"];
-$fileupload = $_FILES["fileupload"] ?? null;
+$usertype = $_REQUEST["usertype"];
 
 $errors = [];
 $values = [];
@@ -16,8 +16,17 @@ $values = [];
 if(!$email){
     $errors["email"] = "This is a required field";
 }
+else {
+    $values["email"] = $email;  
+}
 if(!$password){
     $errors["password"] = "Password field is required";
+}
+if(!$usertype){
+    $errors["usertype"] = "usertype field is required";
+}
+else {
+    $values["usertype"] = $usertype; 
 }
 
 if(count($errors) > 0){
@@ -31,23 +40,24 @@ if(count($errors) > 0){
     }else{
         unset($_SESSION["passwordErr"]);
     }
-$values["email"] = $email;
+    if($errors["usertype"] != ""){
+        $_SESSION["usertypeErr"] = $errors["usertype"];
+    }else{
+        unset($_SESSION["usertypeErr"]);
+    }
+
+
+// $values["email"] = $email;
 
 $_SESSION["previousValues"] = $values;
 
 Header("Location: ..\View\signup.php");
 
 }else{
-    $path = "";
-    if($fileupload){
-        $targetDir = "../uploads/";
-        $path = $targetDir.basename($fileupload["name"]);
-        $isUploaded = move_uploaded_file($fileupload["tmp_name"], $path);
-        echo "Is Uploaded ....".$isUploaded;
-    }
+    
     $db = new DatabaseConnection();
     $connection = $db->openConnection();
-    $result = $db->signUp($connection, "users", $email, $password, $path);
+    $result = $db->signUp($connection, "users", $email, $password, $usertype);
     if($result){
         Header("Location: ..\View\login.php");
       
