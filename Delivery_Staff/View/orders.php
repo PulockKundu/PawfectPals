@@ -1,26 +1,35 @@
 <?php
-include "../Model/DatabaseConnection.php";
-// session_start();
-
-
+//include "../Model/DatabaseConnection.php";
+require_once "../Model/DatabaseConnection.php";
+// session_start(); //  
 
 function TableHeader(){
-    echo "<table border=1><tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Profile Picture</th>
+    echo "<table style='border:3px solid black; border-collapse:collapse; border-color: #25d27b; '><tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Order Date</th>
+            <th>Delivery Date</th>
+            <th>Delivery Staff </th>
           </tr>";
 }
 function TableRow(){
     $db = new DatabaseConnection();
     $connection = $db->openConnection();
-    $users = $db->getAllUsers($connection, "users");
-    if($users->num_rows > 0){
-        while($user = $users->fetch_assoc()){
+    $email = $_SESSION['email'];
+    $result = $db->getOrdersByEmail($connection, "orderdetails", $email);
+    //$result = $db->getAllUsers($connection, "orderdetails");
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
             echo "<tr>
-            <td>".$user['id']."</td>
-            <td>".$user['email']."</td>
-            <td><img src='".$user["filepath"]."' width='50' height='50'/> </td>
+                <td>".$row['orderid']."</td>
+                <td>".$row['customername']."</td>         
+                <td>".$row['location']."</td>
+                <td>".$row['status']."</td>
+                <td>".$row['orderdate']."</td>
+                <td>".$row['deliverydate']."</td>
+                <td>".$row['deliverystaffemail']."</td>
           </tr>";
         }
     }
