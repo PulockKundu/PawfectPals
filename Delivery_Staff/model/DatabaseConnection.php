@@ -5,7 +5,7 @@ class DatabaseConnection{
         $db_host = "localhost";
         $db_user = "root";
         $db_password = "";
-        $db_name = "section_u";
+        $db_name = "pawfect";
 
         $connection  = new mysqli($db_host, $db_user, $db_password, $db_name);
         if($connection->connect_error){
@@ -14,8 +14,8 @@ class DatabaseConnection{
         return $connection;
     }
 
-    function signUp($connection, $tableName, $email, $password, $filepath){
-        $sql = "INSERT INTO ".$tableName." (email, password, filepath) VALUES ('".$email."', '".$password."', '".$filepath."')";
+    function signUp($connection, $tableName, $email, $password, $usertype){
+        $sql = "INSERT INTO ".$tableName." (email, password, usertype) VALUES ('".$email."', '".$password."', '".$usertype."')";
         $result = $connection->query($sql);
         return $result;
     }
@@ -24,10 +24,44 @@ class DatabaseConnection{
         $result = $connection->query($sql);
         return $result;
     }
-   public function getAssignedOrders($conn, $email) {
-    $sql = "SELECT * FROM orders WHERE delivery_email='$email'";
-    return $conn->query($sql);
+ function getOrdersByEmail($connection, $tableName, $email){
+    $sql = "SELECT * FROM ".$tableName." WHERE deliverystaffemail = '".$email."'";
+    $result = $connection->query($sql);
+    return $result;
 }
+function getAssignedOrdersCount($connection, $tableName, $email){
+    $sql = "SELECT COUNT(*) AS total 
+            FROM ".$tableName." 
+            WHERE deliverystaffemail = '".$email."'";
+    $result = $connection->query($sql);
+    return $result;
+}
+function getOutForDeliveryCount($connection, $tableName, $email){
+    $sql = "SELECT COUNT(*) AS total 
+            FROM ".$tableName." 
+            WHERE deliverystaffemail = '".$email."' 
+            AND status = 'Out for Delivery'";
+    $result = $connection->query($sql);
+    return $result;
+}
+function getDeliveredCount($connection, $tableName, $email){
+    $sql = "SELECT COUNT(*) AS total 
+            FROM ".$tableName." 
+            WHERE deliverystaffemail = '".$email."' 
+            AND status = 'Delivered'";
+    $result = $connection->query($sql);
+    return $result;
+}
+function getCancelledCount($connection, $tableName, $email){
+    $sql = "SELECT COUNT(*) AS total 
+            FROM ".$tableName." 
+            WHERE deliverystaffemail = '".$email."' 
+            AND status = 'Cancelled'";
+    $result = $connection->query($sql);
+    return $result;
+}
+
+
 function getAllUsers($connection, $tableName){
         $sql = "SELECT * FROM ".$tableName;
         $result = $connection->query($sql);
