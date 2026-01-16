@@ -61,6 +61,12 @@ function getCancelledCount($connection, $tableName, $email){
     return $result;
 }
 
+public function updateOrderStatus($connection, $orderId, $status) {
+    $sql = "UPDATE orderdetails SET status = ? WHERE orderid = ?";  
+    $stmt = $connection->prepare($sql);  
+    $stmt->bind_param("si", $status, $orderId);  
+    return $stmt->execute();
+}
 
 function getAllUsers($connection, $tableName){
         $sql = "SELECT * FROM ".$tableName;

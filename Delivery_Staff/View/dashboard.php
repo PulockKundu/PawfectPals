@@ -16,6 +16,7 @@ setcookie("webtech_section_u", "Theory", time()+3600);
 <head>
     <title>Delivery Dashboard | Pawfect Pals</title>
     <link rel="stylesheet" href="../css/dashboard.css">
+   
 </head>
 
 <body>
@@ -76,6 +77,6 @@ setcookie("webtech_section_u", "Theory", time()+3600);
     </div>
 
 </div>
-
+<script src="../controller/JS/update_status.js"></script>
 </body>
 </html>
