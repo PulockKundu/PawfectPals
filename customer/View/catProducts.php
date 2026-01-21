@@ -1,7 +1,11 @@
 <?php 
+
 session_start();
-if(!isset($_SESSION["isLoggedIn"])){ header("Location: login.php"); exit(); }
-$email = $_SESSION["email"] ?? "";
+if(!isset($_SESSION["isLoggedIn"]))
+    { header("Location: login.php"); exit(); }
+
+
+$userName = $_SESSION["userName"] ?? "User";
 $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 
@@ -37,11 +41,18 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
             font-weight: bold; 
             margin-left:10px; }
         
-        /* Cart Link Style */
-        .cart-header { position: absolute; right: 20px; }
-        .view-cart-link { background: #FAF3E0; color: #1e6c90; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-weight: bold; border: 1px solid #1e6c90; }
+        .cart-header { 
+            position: absolute; 
+            right: 20px; }
+        .view-cart-link { 
+            background: #FAF3E0; 
+            color: #1e6c90; 
+            padding: 8px 15px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            border: 1px solid #1e6c90; }
 
-        /* Popup SMS Style */
         #cart-popup {
             display: none;
             position: fixed;
@@ -56,13 +67,46 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
             font-weight: bold;
         }
 
-        .product-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-        .product-box { flex: 0 0 30%; height: 450px; border: 1px solid #2c1b02; background-color: #FAF3E0; padding: 20px; text-align: center; box-sizing: border-box; transition: 0.3s; }
-        .product-box:hover { outline:2px solid #1b5b69; outline-offset:8px; }
-        .product-img { width: 70%; height: 230px; object-fit: cover; border-radius: 5px; }
-        .product-name { font-size: 17px; font-weight: bold; margin: 10px 0; height: 40px; }
-        .price { color: #1e6c90; font-weight: bold; margin-bottom: 10px; }
-        .add-btn { width: 140px; height: 35px; background-color: #daffa6; border: 1px solid #333; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .product-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            padding: 20px; 
+            gap: 20px; }
+        .product-box { 
+            flex: 0 0 30%; 
+            height: 450px; 
+            border: 1px solid #2c1b02; 
+            background-color: #FAF3E0; 
+            padding: 20px; 
+            text-align: center; 
+            box-sizing: border-box; 
+            transition: 0.3s; }
+        .product-box:hover { 
+            outline:2px solid #1b5b69; 
+            outline-offset:8px; }
+        .product-img { 
+            width: 70%; 
+            height: 230px; 
+            object-fit: cover; 
+            border-radius: 5px; }
+        .product-name { 
+            font-size: 17px; 
+            font-weight: bold; 
+            margin: 10px 0; 
+            height: 40px; }
+        .price { 
+            color: #1e6c90; 
+            font-weight: bold;
+             margin-bottom: 10px; }
+        .add-btn { 
+            width: 140px; 
+            height: 35px; 
+            background-color: #daffa6; 
+            border: 1px solid #333; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; }
         .add-btn:hover { background-color: #b6e86b; }
     </style>
 </head>
@@ -73,7 +117,7 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
     <div class="searchbar">
         <div class="user-greet">
             <a href="dashboard.php" style="color: white; text-decoration: none; margin-right:15px;">← Home</a>
-            Hi, <?php echo $email; ?>
+            Hi, <?php echo $userName; ?>
             <a href="../Controller/logout.php" class="logout-btn">Logout</a>
         </div>
         <div class="cart-header">

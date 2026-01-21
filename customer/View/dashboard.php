@@ -44,12 +44,38 @@ if (isset($_SESSION['cart'])) {
         z-index: 100;
     }
 
+    .search-box-container {
+        display: flex;
+        width: 40%;
+        position: relative;
+    }
+
     .searchbar_input {
-        width: 30%; 
+        flex: 1;
         padding: 10px;
-        border-radius: 5px;
-        border: none;
+        border-radius: 5px 0 0 5px;
+        border: 1px solid #1e6c90;
         outline: none;
+    }
+
+    .search-btn {
+        width: 80px;
+        background: #FAF3E0;
+        border: 1px solid #1e6c90;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    #suggestion-results {
+        position: absolute;
+        top: 42px;
+        width: 100%;
+        background: white;
+        z-index: 200;
+        border: 1px solid #ccc;
+        border-top: none;
     }
 
     .user-info {
@@ -69,7 +95,6 @@ if (isset($_SESSION['cart'])) {
         font-weight: bold;
     }
 
-    
     .view-cart-link {
         background: #FAF3E0;
         color: #1e6c90;
@@ -79,10 +104,6 @@ if (isset($_SESSION['cart'])) {
         font-weight: bold;
         border: 1px solid #1e6c90;
         font-size: 14px;
-    }
-
-    .view-cart-link:hover {
-        background: #fdfaf0;
     }
 
     .welcome{
@@ -113,7 +134,7 @@ if (isset($_SESSION['cart'])) {
         transition: 0.3s;
     }
 
-    button {
+    .product-box button {
         width: 190px;
         height:30px;
         background-color: #daffa6;
@@ -148,73 +169,99 @@ if (isset($_SESSION['cart'])) {
         margin-top: 50px;
     }
     
-    a {
-        text-decoration: none;
-    }
+    a { text-decoration: none; }
     </style>
 </head>
 
 <body>
 
-    <div class="searchbar">
-        <div class="user-info">
-            Welcome, <b><?php echo $userName; ?></b>
-            <a href="../Controller/logout.php" class="logout-btn">Logout</a>
-        </div>
-        
-        <input type="text" placeholder="Search here....." class="searchbar_input">
-
-        <div class="cart-section">
-            <a href="viewCart.php" class="view-cart-link">
-             View Cart (<?php echo $cartCount; ?>)
-            </a>
-        </div>
+<div class="searchbar">
+    <div class="user-info">
+        Welcome!, <b><?php echo $userName; ?></b>
+        <a href="profile.php" 
+           style="color: black; margin-left: 15px; text-decoration: underline; cursor: pointer; display: inline-block;">My Profile </a>
+        <a href="../Controller/logout.php" class="logout-btn">Logout</a>
     </div>
 
-    <div class="welcome">
-        <img src="../images/home.png" class="home-img">
+    <div class="search-box-container">
+        <input type="text" id="dashboardSearch" placeholder="Search products..." 
+               class="searchbar_input" onkeyup="showSuggestions(this.value)" autocomplete="off">
+        <button onclick="goToProductPage()" class="search-btn">Search</button>
+        <div id="suggestion-results"></div>
     </div>
 
-    <div class="product-container">
-
-        <div class="product-box">
-            <img src="../images/cutecat.avif" class="product-img">
-            <br><br>
-            <a href="catProducts.php">
-                <button type="button"><b>Cat Product</b></button>
-            </a>
-        </div>
-
-        <div class="product-box">
-            <img src="../images/doghome.jpg" class="product-img">
-            <br><br>
-            <a href="dogProducts.php">
-                <button type="button"><b>Dog Product</b></button>
-            </a>
-        </div>
-
-        <div class="product-box">
-            <img src="../images/toy.png" class="product-img">
-            <br><br>
-            <a href="toyProducts.php">
-                <button type="button"><b>Pet Toy</b></button>
-            </a>
-        </div>
-
-        <div class="product-box">
-            <img src="../images/grom.png" class="product-img">
-            <br><br>
-            <a href="groomingProduct.php">
-                <button type="button"><b>Grooming Product</b></button>
-            </a>
-        </div>
-
+    <div class="cart-header">
+        <a href="viewCart.php" class="view-cart-link">View Cart (<?php echo $cartCount; ?>)</a>
     </div>
+</div>
 
-    <div class="footer_style">
-        <hr>
-        <footer>@copyright 2026</footer>
+<div class="welcome">
+    <img src="../images/home.png" class="home-img">
+</div>
+
+<div class="product-container">
+    <div class="product-box">
+        <img src="../images/cutecat.avif" class="product-img">
+        <br><br>
+        <a href="catProducts.php"><button type="button"><b>Cat Product</b></button></a>
     </div>
+    <div class="product-box">
+        <img src="../images/doghome.jpg" class="product-img">
+        <br><br>
+        <a href="dogProducts.php"><button type="button"><b>Dog Product</b></button></a>
+    </div>
+    <div class="product-box">
+        <img src="../images/toy.png" class="product-img">
+        <br><br>
+        <a href="toyProducts.php"><button type="button"><b>Pet Toy</b></button></a>
+    </div>
+    <div class="product-box">
+        <img src="../images/grom.png" class="product-img">
+        <br><br>
+        <a href="orderHistory.php"><button type="button"><b>Order History</b></button></a>
+    </div>
+</div>
+
+<div class="footer_style">
+    <hr>
+    <footer>@copyright 2026</footer>
+</div>
+
+<script>
+function showSuggestions(str) {
+    if (str.length == 0) {
+        document.getElementById("suggestion-results").innerHTML = "";
+        return;
+    }
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("suggestion-results").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "../Controller/getSuggestions.php?q=" + str, true);
+    xhttp.send();
+}
+
+function selectSuggestion(name, category) {
+    document.getElementById("dashboardSearch").value = name;
+    document.getElementById("suggestion-results").innerHTML = "";
+    redirect(category);
+}
+
+function goToProductPage() {
+    var val = document.getElementById("dashboardSearch").value.toLowerCase();
+    if (val.includes("cat")) redirect("Cat");
+    else if (val.includes("dog")) redirect("Dog");
+    else if (val.includes("toy")) redirect("Toy");
+}
+
+function redirect(cat) {
+    if (cat == "Cat") window.location.href = "catProducts.php";
+    else if (cat == "Dog") window.location.href = "dogProducts.php";
+    else if (cat == "Toy") window.location.href = "toyProducts.php";
+}
+</script>
 
 </body>
 </html>
