@@ -216,7 +216,7 @@ if (isset($_SESSION['cart'])) {
         <a href="toyProducts.php"><button type="button"><b>Pet Toy</b></button></a>
     </div>
     <div class="product-box">
-        <img src="../images/grom.png" class="product-img">
+        <img src="../images/order.png" class="product-img">
         <br><br>
         <a href="orderHistory.php"><button type="button"><b>Order History</b></button></a>
     </div>
