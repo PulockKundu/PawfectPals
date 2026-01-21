@@ -16,12 +16,23 @@ $values = [];
 if(!$email){
     $errors["email"] = "This is a required field";
 }
+elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $errors["email"] = "Please Enter the correct email";
+}
 else {
     $values["email"] = $email;  
 }
+
 if(!$password){
     $errors["password"] = "Password field is required";
 }
+elseif(strlen($password) < 6){
+    $errors["password"] = "Password must be at least 6 characters";
+}
+elseif(!preg_match('/[@#]/', $password)){
+    $errors["password"] = "Password must contain @ or #";
+}
+
 if(!$usertype){
     $errors["usertype"] = "usertype field is required";
 }
@@ -47,7 +58,7 @@ if(count($errors) > 0){
     }
 
 
-// $values["email"] = $email;
+$values["email"] = $email;
 
 $_SESSION["previousValues"] = $values;
 
@@ -60,6 +71,7 @@ Header("Location: ..\View\signup.php");
     $result = $db->signUp($connection, "users", $email, $password, $usertype);
     if($result){
         Header("Location: ..\View\login.php");
+    
       
     }else{
         $_SESSION["signUpErr"] = "Failed to signup";

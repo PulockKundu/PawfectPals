@@ -29,6 +29,11 @@ class DatabaseConnection{
     $result = $connection->query($sql);
     return $result;
 }
+ function getDeliveredOrdersByEmail($connection, $tableName, $email){
+    $sql = "SELECT * FROM ".$tableName." WHERE deliverystaffemail = '".$email."' AND status = 'Delivered'";
+    $result = $connection->query($sql);
+    return $result;
+}
 function getAssignedOrdersCount($connection, $tableName, $email){
     $sql = "SELECT COUNT(*) AS total 
             FROM ".$tableName." 

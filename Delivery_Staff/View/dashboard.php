@@ -25,9 +25,10 @@ setcookie("webtech_section_u", "Theory", time()+3600);
     <div class="logo"> Pawfect Pals</div>
 
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Assigned Orders</a></li>
-        <li><a href="#">Delivery History</a></li>
+        <li><a href="dashboard.php">Home</a></li>
+        <!-- <li><a href="#">Assigned Orders</a></li> -->
+        <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
+       
         <li><a href="#">View Profile</a></li>
         <li><a href="../controller/logout.php" class="logout">Logout</a></li>
     </ul>
@@ -49,7 +50,7 @@ setcookie("webtech_section_u", "Theory", time()+3600);
             <p><?php echo $assignedCount; ?></p>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <h3>Out for Delivery</h3>
             <p><?php echo $outForDelivery; ?></p>
         </div>
@@ -61,7 +62,7 @@ setcookie("webtech_section_u", "Theory", time()+3600);
         <div class="card">
             <h3>Cancelled</h3>
             <p><?php echo $cancelledCount; ?></p>
-        </div>
+        </div> -->
 
     </div>
 

@@ -14,6 +14,8 @@ $signUpErr = $_SESSION["signUpErr"] ?? "";
 $previousValues = $_SESSION["previousValues"] ?? [];
 $usertype = $previousValues['usertype'] ?? '';
 
+
+
 unset($_SESSION["previousValues"]);
 unset($_SESSION["emailErr"]);
 unset($_SESSION["passwordErr"]);
@@ -70,5 +72,6 @@ unset($_SESSION["signUpErr"]);
     </table>
 </form>
 </div>
+
 </body>
 </html>

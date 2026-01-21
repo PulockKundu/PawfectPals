@@ -13,8 +13,18 @@ $values = [];
 if(!$email){
     $errors["email"] = "This is a required field";
 }
+elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $errors["email"] = "Enter the correct email";
+}
+
 if(!$password){
     $errors["password"] = "Password field is required";
+}
+elseif(strlen($password) < 6){
+    $errors["password"] = "Password must be at least 6 characters";
+}
+elseif(!preg_match('/[@#]/', $password)){
+    $errors["password"] = "Password must contain @ or #";
 }
 
 if(count($errors) > 0){
