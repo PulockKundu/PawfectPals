@@ -9,10 +9,11 @@
 
     <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
-        <!-- <li><a href="#">Assigned Orders</a></li> -->
+    
         <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
        
         <li><a href="order_filtered.php">Filtered Order</a></li>
+         <li><a href="update_profile.php">Profile</a></li>
         <li><a href="../controller/logout.php" class="logout">Logout</a></li>
     </ul>
 </nav>
@@ -23,7 +24,7 @@
 
 <?php
 require_once "../model/DatabaseConnection.php";
-// session_start(); 
+
 // table order by location
 function TableHeader(){
     echo "

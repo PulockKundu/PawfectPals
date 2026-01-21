@@ -26,10 +26,13 @@ setcookie("webtech_section_u", "Theory", time()+3600);
 
     <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
-        <!-- <li><a href="#">Assigned Orders</a></li> -->
+       
         <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
        
         <li><a href="order_filtered.php">Filtered Order</a></li>
+
+        <li><a href="update_profile.php">Profile</a></li>
+
         <li><a href="../controller/logout.php" class="logout">Logout</a></li>
     </ul>
 </nav>
@@ -49,20 +52,6 @@ setcookie("webtech_section_u", "Theory", time()+3600);
             <h3>Assigned Orders</h3>
             <p><?php echo $assignedCount; ?></p>
         </div>
-
-        <!-- <div class="card">
-            <h3>Out for Delivery</h3>
-            <p><?php echo $outForDelivery; ?></p>
-        </div>
-
-        <div class="card">
-            <h3>Delivered</h3>
-            <p><?php echo $deliveredCount; ?></p>
-        </div>
-        <div class="card">
-            <h3>Cancelled</h3>
-            <p><?php echo $cancelledCount; ?></p>
-        </div> -->
 
     </div>
 

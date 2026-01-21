@@ -1,7 +1,7 @@
 <?php
 //include "../model/DatabaseConnection.php";
 require_once "../model/DatabaseConnection.php";
-// session_start(); //  
+
 
 function TableHeader(){
     echo "<table style='border:3px solid black; border-collapse:collapse; border-color: #25d27b; '><tr>

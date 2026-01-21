@@ -9,7 +9,7 @@ function validateSignup() {
 
     let valid = true;
 
-    // Email validation
+
     if (email === "") {
         document.getElementById("emailErr").innerHTML = "Email required";
         valid = false;
@@ -18,7 +18,7 @@ function validateSignup() {
         valid = false;
     }
 
-    // Password validation
+   
     if (password === "") {
         document.getElementById("passwordErr").innerHTML = "Password required";
         valid = false;
@@ -32,7 +32,7 @@ function validateSignup() {
         valid = false;
     }
 
-    // User type validation
+    
     if (usertype === "") {
         document.getElementById("usertypeErr").innerHTML =
             "Select user type";

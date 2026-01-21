@@ -73,7 +73,7 @@ unset($_SESSION["signUpErr"]);
     </tr>
      <tr>
         <td>
-            <a href="..\..\Admin\View\AdminDashboard.php"> Back</a>
+            <a href="..\..\Admin\View\AdminDashboard.php"> <--Back</a>
         </td>
     </tr>
 

@@ -15,15 +15,13 @@ include "../controller/dashboard_card_value.php";
 
     <ul class="nav-links">
         <li><a href="dashboard.php">Home</a></li>
-        <!-- <li><a href="#">Assigned Orders</a></li> -->
+    
         <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
        
        <li><a href="order_filtered.php">Filtered Order</a></li>
+       <li><a href="update_profile.php">Profile</a></li>
         <!-- <a href="dashboard.php" style=" background-color: red; font-size: 18px; ">Back</a> -->
-        <!-- <li><a href="dashboard.php" class="logout"><--Back</a></li> -->
-
-
-
+        
         <li><a href="../controller/logout.php" class="logout">Logout</a></li>
     </ul>
 </nav>
@@ -48,11 +46,6 @@ include "../controller/dashboard_card_value.php";
             <h3>Cancelled</h3>
             <p><?php echo $cancelledCount; ?></p>
         </div>
-
-        <!-- <div class="card">
-            <h3><a href="dashboard.php" style=" background-color: red; font-size: 24px; ">Back</a></h3>
-        </div>  
-         -->
 
     </div>
 

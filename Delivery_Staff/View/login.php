@@ -64,7 +64,11 @@ unset($_SESSION["loginErr"]);
         </tr>
         <tr>
             <td><input type="submit" name="login" value="Login"/> </td>
+          
         </tr>
+         <td>
+            <a href="..\..\customer\View\login.php"> <--Back</a>
+        </td>
     </table>
 </form>
 </div>
