@@ -1,12 +1,27 @@
-<?php
+<?php 
 session_start();
 include "../Model/databaseConnection.php";
 
-$email = trim($_POST['email'] ?? '');
-$password = trim($_POST['password'] ?? '');
+$userIdentifer = $_REQUEST['username'] ?? ''; 
+$password = $_REQUEST['password'] ?? '';
 
-if($email == "" || $password == ""){
-    $_SESSION['loginErr'] = "Email and Password are required";
+$errors = [];
+$values = [];
+
+if(empty(trim($userIdentifer))){
+    $errors["username"] = "Username is a required field";
+}
+if(empty(trim($password))){
+    $errors["password"] = "Password field is required";
+}
+
+if(count($errors) > 0){
+    $_SESSION['usernameErr'] = $errors["username"] ?? "";
+    $_SESSION['passwordErr'] = $errors["password"] ?? "";
+    
+    $values["username"] = $userIdentifer;
+    $_SESSION['previousValues'] = $values;
+
     header("Location: ../View/login.php");
     exit();
 }
@@ -14,16 +29,24 @@ if($email == "" || $password == ""){
 $db = new DatabaseConnection();
 $conn = $db->openConnection();
 
-$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+$sql = "SELECT * FROM users WHERE Name='$userIdentifer' AND password='$password'";
 $result = $conn->query($sql);
 
 if($result && $result->num_rows == 1){
+    $row = $result->fetch_assoc();
+    
     $_SESSION['isLoggedIn'] = true;
-    $_SESSION['email'] = $email;
+    $_SESSION['userName'] = $row['Name']; 
+    $_SESSION['email'] = $row['email']; 
+    $_SESSION['userId'] = $row['id']; 
+    
     header("Location: ../View/dashboard.php");
     exit();
 } else {
-    $_SESSION['loginErr'] = "Invalid email or password";
+    $_SESSION['loginErr'] = "Invalid username or password";
+    $values["username"] = $userIdentifer;
+    $_SESSION['previousValues'] = $values;
+    
     header("Location: ../View/login.php");
     exit();
 }
