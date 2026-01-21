@@ -108,7 +108,7 @@ unset($_SESSION['previousValues']);
 <h1 class="site-title">PAWFECT PETSHOP ONLINE</h1>
 
 <div class="top-nav">
-    <a href="../../Admin/view/login.php">Admin</a>
+    <a href="../../Admin/view/AdminLogin.php">Admin</a>
     <a href="../../Delivery_Staff/view/login.php">Delivery Staff</a>
 </div>
 
