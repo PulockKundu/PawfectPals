@@ -1,53 +1,115 @@
-<?php 
+<?php
 session_start();
-include "../Model/databaseConnection.php";
 
-$userIdentifer = $_REQUEST['username'] ?? ''; 
-$password = $_REQUEST['password'] ?? '';
 
-$errors = [];
-$values = [];
-
-if(empty(trim($userIdentifer))){
-    $errors["username"] = "Username is a required field";
-}
-if(empty(trim($password))){
-    $errors["password"] = "Password field is required";
-}
-
-if(count($errors) > 0){
-    $_SESSION['usernameErr'] = $errors["username"] ?? "";
-    $_SESSION['passwordErr'] = $errors["password"] ?? "";
-    
-    $values["username"] = $userIdentifer;
-    $_SESSION['previousValues'] = $values;
-
-    header("Location: ../View/login.php");
+if ($_SESSION['isLoggedIn'] ?? false) {
+    header("Location: dashboard.php");
     exit();
 }
 
-$db = new DatabaseConnection();
-$conn = $db->openConnection();
+$loginErr = $_SESSION['loginErr'] ?? "";
+$usernameErr = $_SESSION['usernameErr'] ?? "";
+$passwordErr = $_SESSION['passwordErr'] ?? "";
+$previousValues = $_SESSION['previousValues'] ?? [];
 
-$sql = "SELECT * FROM users WHERE Name='$userIdentifer' AND password='$password'";
-$result = $conn->query($sql);
-
-if($result && $result->num_rows == 1){
-    $row = $result->fetch_assoc();
-    
-    $_SESSION['isLoggedIn'] = true;
-    $_SESSION['userName'] = $row['Name']; 
-    $_SESSION['email'] = $row['email']; 
-    $_SESSION['userId'] = $row['id']; 
-    
-    header("Location: ../View/dashboard.php");
-    exit();
-} else {
-    $_SESSION['loginErr'] = "Invalid username or password";
-    $values["username"] = $userIdentifer;
-    $_SESSION['previousValues'] = $values;
-    
-    header("Location: ../View/login.php");
-    exit();
-}
+unset($_SESSION['loginErr']);
+unset($_SESSION['usernameErr']);
+unset($_SESSION['passwordErr']);
+unset($_SESSION['previousValues']);
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+    body {
+        margin:0; 
+        padding:0; 
+        font-family:Arial; 
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+        height:100vh;
+        background-image:url('../images/login.jpg'); 
+        background-size:cover; 
+        background-position:center; 
+        background-repeat:no-repeat;
+    }
+    .login-container { 
+        background-color:rgb(255,255,255); 
+        padding:40px; 
+        width:350px; 
+        border-radius:10px; 
+        text-align:center; 
+        
+    }
+    .login-container h2 { 
+        margin-bottom:30px; 
+        color:#60c0ed; }
+    .login-container input[type="text"], input[type="password"] { 
+        width:90%; 
+        padding:12px; 
+        margin:8px 0; 
+        border:1px solid #ccc; 
+    }
+    .login-container input[type="submit"] { 
+        width:95%; 
+        padding:12px; 
+        margin-top:20px; 
+        border:none; 
+        background-color:#60c0ed; 
+        color:white; 
+        font-size:16px; 
+        cursor:pointer; 
+    }
+    .login-container input[type="submit"]:hover { 
+        background-color:#3a9ad9; }
+    .login-container a { 
+        display:block; 
+        margin-top:15px; 
+        color:#60c0ed; 
+        text-decoration:none; 
+        font-size:14px; 
+    }
+    .login-container a:hover { text-decoration: underline; }
+    .site-title { 
+        position:absolute; 
+        top:20px; left:20px; 
+        color:#543112; 
+        font-size:36px; 
+        font-weight:bold; 
+    }
+    .error { 
+        color:red; 
+        font-size:12px; 
+        display:block; 
+        text-align: left; 
+        margin-left: 5%; }
+    </style>
+</head>
+<body>
+
+<h1 class="site-title">PAWFECT PETSHOP ONLINE</h1>
+
+<div class="login-container">
+    <h2>Login</h2>
+    
+    <?php if($loginErr) echo "<span class='error' style='text-align:center; margin-bottom:10px;'>$loginErr</span>"; ?>
+
+    <form action="../Controller/loginValidation.php" method="post">
+        <input type="text" name="username" placeholder="Username" 
+               value="<?php echo $previousValues['username'] ?? ''; ?>">
+        <?php if($usernameErr) echo "<span class='error'>$usernameErr</span>"; ?>
+
+        <input type="password" name="password" placeholder="Password">
+        <?php if($passwordErr) echo "<span class='error'>$passwordErr</span>"; ?>
+
+        <input type="submit" value="Login">
+    </form>
+    
+    <a href="forgotPassword.php">Forgot Password?</a>
+    <a href="signup.php">Create an Account</a>
+</div>
+
+</body>
+</html>
