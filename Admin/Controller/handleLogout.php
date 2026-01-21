@@ -5,6 +5,6 @@ $_SESSION = array();
 
 session_destroy();
 
-header("Location: ../View/AdminLogin.php");
+header("Location: ../../customer/view/login.php");
 exit();
 ?>
