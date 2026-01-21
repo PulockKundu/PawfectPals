@@ -5,7 +5,8 @@ if(!$isLoggedIn){
     header("Location: login.php");
     exit();
 }
-$email = $_SESSION["email"] ?? "";
+
+$userName = $_SESSION["userName"] ?? "User";
 
 
 $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
@@ -150,7 +151,7 @@ $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
     <div class="searchbar">
         <div class="user-greet">
             <a href="dashboard.php" style="color: white; text-decoration: none; margin-right:15px;">← Home</a>
-            Hi, <?php echo $email; ?>
+            Hi, <?php echo $userName; ?>
             <a href="../Controller/logout.php" class="logout-btn">Logout</a>
         </div>
 
