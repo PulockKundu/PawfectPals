@@ -3,6 +3,7 @@ session_start();
 $isLoggedIn = $_SESSION["isLoggedIn"] ?? false;
 if($isLoggedIn){
     header("Location: AdminDashboard.php");
+    exit();
 }
 ?>
 
@@ -30,6 +31,7 @@ input{
     margin: 8px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 button{
     width: 100%;
@@ -60,7 +62,14 @@ button:hover{
     <input type="password" name="password"><br><br>
     <button type="submit">Login</button>
 </form>
-<p class="error"><?php echo $_SESSION["loginErr"] ?? ""; ?></p>
+<p class="error">
+    <?php 
+    if(isset($_SESSION["loginErr"])){
+        echo $_SESSION["loginErr"]; 
+        unset($_SESSION["loginErr"]);
+    }
+    ?>
+</p>
 </div>
 </body>
 </html>
