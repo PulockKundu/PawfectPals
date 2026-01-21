@@ -24,6 +24,13 @@ class DatabaseConnection{
         $result = $connection->query($sql);
         return $result;
     }
+    function checkExistingUser($connection, $tableName, $email){
+        $sql = "SELECT * FROM ".$tableName." WHERE email='".$email."'";
+        $result = $connection->query($sql);
+        return $result;
+    }
+
+
  function getOrdersByEmail($connection, $tableName, $email){
     $sql = "SELECT * FROM ".$tableName." WHERE deliverystaffemail = '".$email."'";
     $result = $connection->query($sql);

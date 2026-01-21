@@ -1,11 +1,6 @@
 <?php 
 session_start();
 
-// $isLoggedIn = $_SESSION["isLoggedIn"] ?? false;
-// if ($isLoggedIn) {
-//     header("Location: dashboard.php");
-// }
-
 $emailErr = $_SESSION["emailErr"] ?? "";
 $passwordErr = $_SESSION["passwordErr"] ?? "";
 $usertypeErr = $_SESSION["usertypeErr"] ?? "";
@@ -25,6 +20,7 @@ unset($_SESSION["signUpErr"]);
 <head>
     <title>Signup</title>
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../controller/JS/checkEmail.js"></script>
 </head>
 
 <body>
@@ -38,10 +34,10 @@ unset($_SESSION["signUpErr"]);
     <tr>
         <td>Email</td>
         <td>
-            <input type="text" id="email" name="email"
-                   placeholder="Enter your email"
-                   value="<?php echo $previousValues['email'] ?? '' ?>">
+                   <input type="text" id="email" name="email" value="<?php echo $previousValues['email'] ?? '' ?>" onkeyup="findExistingEmail()"/>
+                   
         </td>
+         <td><p id="ajaxResponse"></p></td>
         <td class="error" id="emailErr"><?php echo $emailErr; ?></td>
     </tr>
 
@@ -59,9 +55,9 @@ unset($_SESSION["signUpErr"]);
         <td>
             <select name="usertype" id="usertype">
                 <option value=""></option>
-                <!-- <option value="customer" <?php if($usertype=='customer') echo 'selected'; ?>>Customer</option> -->
+               
                 <option value="deliverystaff" <?php if($usertype=='deliverystaff') echo 'selected'; ?>>Delivery Staff</option>
-                <!-- <option value="admin" <?php if($usertype=='admin') echo 'selected'; ?>>Admin</option> -->
+              
             </select>
         </td>
         <td class="error" id="usertypeErr"><?php echo $usertypeErr; ?></td>
@@ -75,7 +71,6 @@ unset($_SESSION["signUpErr"]);
     <tr>
         <td><input type="submit" value="Sign Up"></td>
     </tr>
-    <!-- Header("Location: ..\..\Admin\View\AdminDashboard.php"); -->
      <tr>
         <td>
             <a href="..\..\Admin\View\AdminDashboard.php"> Back</a>

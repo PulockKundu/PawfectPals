@@ -13,33 +13,6 @@ $usertype = $_REQUEST["usertype"];
 $errors = [];
 $values = [];
 
-// if(!$email){
-//     $errors["email"] = "This is a required field";
-// }
-// elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-//     $errors["email"] = "Please Enter the correct email";
-// }
-// else {
-//     $values["email"] = $email;  
-// }
-
-// if(!$password){
-//     $errors["password"] = "Password field is required";
-// }
-// elseif(strlen($password) < 6){
-//     $errors["password"] = "Password must be at least 6 characters";
-// }
-// elseif(!preg_match('/[@#]/', $password)){
-//     $errors["password"] = "Password must contain @ or #";
-// }
-
-// if(!$usertype){
-//     $errors["usertype"] = "usertype field is required";
-// }
-// else {
-//     $values["usertype"] = $usertype; 
-// }
-
 if(count($errors) > 0){
     if($errors["email"] != ""){
         $_SESSION["emailErr"] = $errors["email"];
@@ -65,20 +38,30 @@ $_SESSION["previousValues"] = $values;
 Header("Location: ..\View\signup.php");
 
 }else{
-    
-    $db = new DatabaseConnection();
+     $db = new DatabaseConnection();
     $connection = $db->openConnection();
-    $result = $db->signUp($connection, "users", $email, $password, $usertype);
-    if($result){
-        $_SESSION["successMsg"] = "Signup successful!";
-     Header("Location: ..\..\Admin\View\AdminDashboard.php");
-     
+
+    
+    $result = $db->checkExistingUser($connection, "users", $email);
+
+    if ($result->num_rows > 0) {
+       
+        $_SESSION["emailErr"] = "Email is already used!";
+        $_SESSION["previousValues"] = ["email" => $email]; 
+        Header("Location: ..\View\signup.php");
       
-    }else{
+    }
+
+    $signUpResult = $db->signUp($connection, "users", $email, $password, $usertype);
+    
+    if ($signUpResult) {
+        $_SESSION["successMsg"] = "Signup successful!";
+        Header("Location: ..\..\Admin\View\AdminDashboard.php");
+    } else {
         $_SESSION["signUpErr"] = "Failed to signup";
         Header("Location: ..\View\signup.php");
     }
-    
+
 }
 
 ?>
