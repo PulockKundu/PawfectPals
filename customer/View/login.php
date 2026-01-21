@@ -27,7 +27,7 @@ unset($_SESSION['loginErr']);
         background-repeat:no-repeat;
     }
     .login-container { 
-        background-color:rgba(255,255,255,0.9); 
+        background-color:rgb(255,255,255); 
         padding:40px; 
         width:350px; 
         border-radius:10px; 
@@ -38,15 +38,13 @@ unset($_SESSION['loginErr']);
     .login-container input[type="text"], input[type="password"] { 
         width:90%; 
         padding:12px; 
-        margin:10px 0; 
-        border-radius:5px; 
+        margin:10px 0;  
         border:1px solid #ccc; }
     .login-container input[type="submit"] { 
         width:95%; 
         padding:12px; 
         margin-top:20px; 
         border:none; 
-        border-radius:5px; 
         background-color:#60c0ed; 
         color:white; 
         font-size:16px; 
@@ -79,13 +77,15 @@ unset($_SESSION['loginErr']);
 
 <div class="login-container">
     <h2>Login</h2>
+    
     <?php if($loginErr) echo "<span class='error'>$loginErr</span>"; ?>
+
     <form action="../Controller/loginValidation.php" method="post">
         <input type="text" name="username" placeholder="Username" required><br>
         <input type="password" name="password" placeholder="Password" required><br>
         <input type="submit" value="Login">
     </form>
-    <a href="#">Forgot Password?</a>
+    <a href="forgotPassword.php">Forgot Password?</a>
     <a href="signup.php">Create an Account</a>
     
 </div>
