@@ -29,7 +29,7 @@ setcookie("webtech_section_u", "Theory", time()+3600);
         <!-- <li><a href="#">Assigned Orders</a></li> -->
         <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
        
-        <li><a href="#">View Profile</a></li>
+        <li><a href="order_filtered.php">Filtered Order</a></li>
         <li><a href="../controller/logout.php" class="logout">Logout</a></li>
     </ul>
 </nav>

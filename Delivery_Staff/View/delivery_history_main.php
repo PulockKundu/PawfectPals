@@ -10,7 +10,28 @@ include "../controller/dashboard_card_value.php";
 </head>
 
     <body>
-        <img src="..\images\deliveredimg.png" alt="Delivered img -img" style="width:100%;height:300px;">
+<nav class="navbar">
+    <div class="logo"> Pawfect Pals</div>
+
+    <ul class="nav-links">
+        <li><a href="dashboard.php">Home</a></li>
+        <!-- <li><a href="#">Assigned Orders</a></li> -->
+        <li><a href="delivery_history_main.php" target="_self">Delivery History</a></li>
+       
+       <li><a href="order_filtered.php">Filtered Order</a></li>
+        <!-- <a href="dashboard.php" style=" background-color: red; font-size: 18px; ">Back</a> -->
+        <!-- <li><a href="dashboard.php" class="logout"><--Back</a></li> -->
+
+
+
+        <li><a href="../controller/logout.php" class="logout">Logout</a></li>
+    </ul>
+</nav>
+
+
+
+
+        <img src="..\images\deliveredimg2.png" alt="Delivered img -img" style="width:100%;height:300px;">
         
        <div class="cards">
 
@@ -28,10 +49,10 @@ include "../controller/dashboard_card_value.php";
             <p><?php echo $cancelledCount; ?></p>
         </div>
 
-        <div class="card">
+        <!-- <div class="card">
             <h3><a href="dashboard.php" style=" background-color: red; font-size: 24px; ">Back</a></h3>
         </div>  
-        
+         -->
 
     </div>
 

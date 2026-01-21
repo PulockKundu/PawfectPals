@@ -79,6 +79,20 @@ function getAllUsers($connection, $tableName){
         return $result;
     }
 
+function getOrdersGroupedByLocation($connection, $tableName){
+    $sql = "SELECT location, COUNT(*) AS total 
+            FROM ".$tableName." 
+            GROUP BY location";
+    $result = $connection->query($sql);
+    return $result;
+}
+function getOrdersGroupedByDate($connection, $tableName){
+    $sql = "SELECT orderdate, COUNT(*) AS total
+            FROM ".$tableName."
+            GROUP BY orderdate
+            ORDER BY orderdate DESC";
+    return $connection->query($sql);
+}
 
 
 

@@ -1,9 +1,17 @@
 <?php
 session_start();
+if (isset($_SESSION["successMsg"])) {
+    echo "<script>alert('{$_SESSION["successMsg"]}');</script>";
+    unset($_SESSION["successMsg"]);
+}
+
 if(!($_SESSION["isLoggedIn"] ?? false)){
     header("Location: AdminLogin.php");
     exit();
 }
+
+
+unset($_SESSION["successMsg"]);
 ?>
 
 <html>
@@ -31,7 +39,7 @@ if(!($_SESSION["isLoggedIn"] ?? false)){
     <a href="manageOrders.php">Monitor Orders</a>
     <a href="AdminReports.php">View Reports</a> 
     <a href="AdminProfile.php">Account Settings</a> 
-    <a href="../Controller/handleLogout.php" style="color: #edbb99;">Logout</a>
+    <a href="../../Delivery_Staff/View/signup.php" style="color: #edbb99;">Assign Delivery Staff</a>
 </div>
 
 <div class="main-content">

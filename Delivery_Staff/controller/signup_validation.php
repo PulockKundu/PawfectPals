@@ -13,32 +13,32 @@ $usertype = $_REQUEST["usertype"];
 $errors = [];
 $values = [];
 
-if(!$email){
-    $errors["email"] = "This is a required field";
-}
-elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    $errors["email"] = "Please Enter the correct email";
-}
-else {
-    $values["email"] = $email;  
-}
+// if(!$email){
+//     $errors["email"] = "This is a required field";
+// }
+// elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+//     $errors["email"] = "Please Enter the correct email";
+// }
+// else {
+//     $values["email"] = $email;  
+// }
 
-if(!$password){
-    $errors["password"] = "Password field is required";
-}
-elseif(strlen($password) < 6){
-    $errors["password"] = "Password must be at least 6 characters";
-}
-elseif(!preg_match('/[@#]/', $password)){
-    $errors["password"] = "Password must contain @ or #";
-}
+// if(!$password){
+//     $errors["password"] = "Password field is required";
+// }
+// elseif(strlen($password) < 6){
+//     $errors["password"] = "Password must be at least 6 characters";
+// }
+// elseif(!preg_match('/[@#]/', $password)){
+//     $errors["password"] = "Password must contain @ or #";
+// }
 
-if(!$usertype){
-    $errors["usertype"] = "usertype field is required";
-}
-else {
-    $values["usertype"] = $usertype; 
-}
+// if(!$usertype){
+//     $errors["usertype"] = "usertype field is required";
+// }
+// else {
+//     $values["usertype"] = $usertype; 
+// }
 
 if(count($errors) > 0){
     if($errors["email"] != ""){
@@ -70,8 +70,9 @@ Header("Location: ..\View\signup.php");
     $connection = $db->openConnection();
     $result = $db->signUp($connection, "users", $email, $password, $usertype);
     if($result){
-        Header("Location: ..\View\login.php");
-    
+        $_SESSION["successMsg"] = "Signup successful!";
+     Header("Location: ..\..\Admin\View\AdminDashboard.php");
+     
       
     }else{
         $_SESSION["signUpErr"] = "Failed to signup";

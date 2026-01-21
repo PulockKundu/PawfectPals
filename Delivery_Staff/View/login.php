@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if (isset($_SESSION["successMsg"])) {
+    echo "<script>alert('{$_SESSION["successMsg"]}');</script>";
+    unset($_SESSION["successMsg"]);
+}
 
 $isLoggedIn = $_SESSION["isLoggedIn"] ?? false;
 if($isLoggedIn){
