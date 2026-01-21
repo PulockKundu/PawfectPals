@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if ($_SESSION['isLoggedIn'] ?? false) {
     header("Location: dashboard.php");
     exit();
@@ -35,13 +34,30 @@ unset($_SESSION['previousValues']);
         background-position:center; 
         background-repeat:no-repeat;
     }
+
+    .top-nav {
+        position: absolute;
+        top: 25px;
+        right: 30px;
+    }
+    .top-nav a {
+        text-decoration: none;
+        color: #543112;
+        font-weight: bold;
+        margin-left: 20px;
+        font-size: 16px;
+    }
+    .top-nav a:hover {
+        color: #60c0ed;
+    }
+
     .login-container { 
         background-color:rgb(255,255,255); 
         padding:40px; 
         width:350px; 
         border-radius:10px; 
         text-align:center; 
-        
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .login-container h2 { 
         margin-bottom:30px; 
@@ -90,6 +106,11 @@ unset($_SESSION['previousValues']);
 <body>
 
 <h1 class="site-title">PAWFECT PETSHOP ONLINE</h1>
+
+<div class="top-nav">
+    <a href="../../Admin/view/login.php">Admin</a>
+    <a href="../../Delivery_Staff/view/login.php">Delivery Staff</a>
+</div>
 
 <div class="login-container">
     <h2>Login</h2>
