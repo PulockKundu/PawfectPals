@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "../Model/databaseConnection.php";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new DatabaseConnection();
     $conn = $db->openConnection();
