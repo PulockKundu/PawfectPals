@@ -99,7 +99,7 @@ $user = $result->fetch_assoc();
             <input type="submit" name="updateProfile" value="Update My Info" class="btn-update">
         </form>
         <hr>
-        <a href="AdminDashboard.php" style="text-decoration: none; color: #666; font-size: 14px;">Back to Dashboard</a>
+        <a href="AdminLogin.php" style="text-decoration: none; color: #666; font-size: 14px;">Back to Dashboard</a>
     </div>
 </body>
 </html>
