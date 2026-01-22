@@ -139,7 +139,7 @@ if ($result && $result->num_rows > 0) {
             
             <h3>Security</h3>
             <label>Reset Password:</label>
-            <input type="password" name="newPassword" placeholder="Type new password to change">
+            <input type="password" name="newPassword" placeholder="Enter new password to change">
             
             <button type="submit" class="btn-update">Save Changes</button>
         </form>
