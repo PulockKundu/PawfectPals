@@ -8,7 +8,6 @@ if(!$isLoggedIn){
 
 $userName = $_SESSION["userName"] ?? "User";
 
-
 $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 
