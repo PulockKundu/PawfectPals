@@ -34,9 +34,10 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 
 ### Frontend
 - HTML5
-- CSS3
-- Bootstrap
+- CSS
+- AJAX
 - JavaScript
+- PHP
 
 ### Backend
 - ASP.NET MVC
