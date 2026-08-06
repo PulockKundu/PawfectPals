@@ -16,31 +16,27 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 - Track delivery status
 - Manage profile
 
-  ## 📸 Customer Module Screenshots
+ ## 📸 Customer Module Screenshots
 
-| Home | Search |
-|------|--------|
-| ![Homepage](CustomerScreenshots/Homepage.png) | ![Search](CustomerScreenshots/Searchbar.png) |
+| 🏠 Homepage | 🔐 Login |
+|-------------|----------|
+| ![Homepage](CustomerScreenshots/Homepage.png) | ![Login](CustomerScreenshots/login.png) |
 
-| Cat Products | Dog Products |
-|--------------|--------------|
-| ![Cat Products](CustomerScreenshots/CatProducts.png) | ![Dog Products](CustomerScreenshots/DogProducts.png) |
+| 🔍 Search Products | 🛍️ Browse Products |
+|--------------------|---------------------|
+| ![Search Bar](CustomerScreenshots/Searchbar.png) | ![Cat Products](CustomerScreenshots/CatProducts.png) |
 
-| Toy Products | Cart |
-|-------------|------|
-| ![Toy Products](CustomerScreenshots/Toy.png) | ![Cart](CustomerScreenshots/Cart.png) |
+| 🐶 Dog Products | 🧸 Toy Products |
+|----------------|-----------------|
+| ![Dog Products](CustomerScreenshots/DogProducts.png) | ![Toy Products](CustomerScreenshots/Toy.png) |
 
-| Place Order | Order History |
-|-------------|---------------|
-| ![Order](CustomerScreenshots/OrderPlace.png) | ![Order History](CustomerScreenshots/Orderhistory.png) |
+| 🛒 Shopping Cart | 💳 Place Order |
+|-----------------|----------------|
+| ![Cart](CustomerScreenshots/Cart.png) | ![Place Order](CustomerScreenshots/OrderPlace.png) |
 
-| Account Settings | Login |
-|------------------|-------|
-| ![Account](CustomerScreenshots/Acountsetting.png) | ![Login](CustomerScreenshots/login.png) |
-
-| Signup | Reset Password |
-|--------|----------------|
-| ![Signup](CustomerScreenshots/Signup.png) | ![Reset Password](CustomerScreenshots/resetpass.png) |
+| 📦 Order History | 👤 Account Settings |
+|------------------|---------------------|
+| ![Order History](CustomerScreenshots/Orderhistory.png) | ![Account Settings](CustomerScreenshots/Acountsetting.png) |
 
 ### 🛠️ Admin (Tasnima Tabassum Sumaiya)
 - Manage customers and delivery staff
