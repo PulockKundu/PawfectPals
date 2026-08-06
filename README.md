@@ -6,7 +6,7 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 
 ## 📌 Features
 
-### 👤 Customer
+### 👤 Customer (Muhshanat Hossain Tanjila)
 - User registration and login
 - Browse products by category
 - Search products by keyword
@@ -16,13 +16,13 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 - Track delivery status
 - Manage profile
 
-### 🛠️ Admin
+### 🛠️ Admin (Tasnima Tabassum Sumaiya)
 - Manage customers and delivery staff
 - Manage products and inventory
 - Monitor orders and deliveries
 - Generate sales and inventory reports
 
-### 🚚 Delivery Staff
+### 🚚 Delivery Staff (Pulock Kundu)
 - View assigned deliveries
 - Update delivery status
 - View delivery history
@@ -49,7 +49,7 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 
 ## 👥 Team Members
 
-- Tasnima Tabassum Sumaiya
 - Muhshanat Hossain Tanjila
+- Tasnima Tabassum Sumaiya
 - Pulock Kumar Kundu
 
