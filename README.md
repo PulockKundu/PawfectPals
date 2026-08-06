@@ -16,27 +16,31 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 - Track delivery status
 - Manage profile
 
- ## 📸 Customer Module Screenshots
+## 📸 Customer Module Screenshots
 
-| 🏠 Homepage | 🔐 Login |
-|-------------|----------|
-| ![Homepage](CustomerScreenshots/Homepage.png) | ![Login](CustomerScreenshots/login.png) |
+| 🔐 Login | 🏠 Homepage |
+|----------|-------------|
+| ![Login](CustomerScreenshots/login.png) | ![Homepage](CustomerScreenshots/Homepage.png) |
 
-| 🔍 Search Products | 🛍️ Browse Products |
-|--------------------|---------------------|
-| ![Search Bar](CustomerScreenshots/Searchbar.png) | ![Cat Products](CustomerScreenshots/CatProducts.png) |
+| 🔍 Search Products | 🐱 Cat Products |
+|--------------------|-----------------|
+| ![Search Products](CustomerScreenshots/Searchbar.png) | ![Cat Products](CustomerScreenshots/CatProducts.png) |
 
 | 🐶 Dog Products | 🧸 Toy Products |
-|----------------|-----------------|
+|-----------------|-----------------|
 | ![Dog Products](CustomerScreenshots/DogProducts.png) | ![Toy Products](CustomerScreenshots/Toy.png) |
 
 | 🛒 Shopping Cart | 💳 Place Order |
 |-----------------|----------------|
-| ![Cart](CustomerScreenshots/Cart.png) | ![Place Order](CustomerScreenshots/OrderPlace.png) |
+| ![Shopping Cart](CustomerScreenshots/Cart.png) | ![Place Order](CustomerScreenshots/OrderPlace.png) |
 
 | 📦 Order History | 👤 Account Settings |
 |------------------|---------------------|
 | ![Order History](CustomerScreenshots/Orderhistory.png) | ![Account Settings](CustomerScreenshots/Acountsetting.png) |
+
+| 📝 Signup | 🔑 Reset Password |
+|-----------|-------------------|
+| ![Signup](CustomerScreenshots/Signup.png) | ![Reset Password](CustomerScreenshots/resetpass.png) |
 
 ### 🛠️ Admin (Tasnima Tabassum Sumaiya)
 - Manage customers and delivery staff
