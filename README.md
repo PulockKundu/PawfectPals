@@ -16,6 +16,32 @@ Pawfect Pals is a full-stack pet e-commerce web application that allows customer
 - Track delivery status
 - Manage profile
 
+  ## 📸 Customer Module Screenshots
+
+| Home | Search |
+|------|--------|
+| ![Homepage](CustomerScreenshots/Homepage.png) | ![Search](CustomerScreenshots/Searchbar.png) |
+
+| Cat Products | Dog Products |
+|--------------|--------------|
+| ![Cat Products](CustomerScreenshots/CatProducts.png) | ![Dog Products](CustomerScreenshots/DogProducts.png) |
+
+| Toy Products | Cart |
+|-------------|------|
+| ![Toy Products](CustomerScreenshots/Toy.png) | ![Cart](CustomerScreenshots/Cart.png) |
+
+| Place Order | Order History |
+|-------------|---------------|
+| ![Order](CustomerScreenshots/OrderPlace.png) | ![Order History](CustomerScreenshots/Orderhistory.png) |
+
+| Account Settings | Login |
+|------------------|-------|
+| ![Account](CustomerScreenshots/Acountsetting.png) | ![Login](CustomerScreenshots/login.png) |
+
+| Signup | Reset Password |
+|--------|----------------|
+| ![Signup](CustomerScreenshots/Signup.png) | ![Reset Password](CustomerScreenshots/resetpass.png) |
+
 ### 🛠️ Admin (Tasnima Tabassum Sumaiya)
 - Manage customers and delivery staff
 - Manage products and inventory
